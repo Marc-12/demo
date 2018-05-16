@@ -1,0 +1,429 @@
+/* FORM inscription & connexion */								
+		#form
+		{
+		margin-left: auto; 	
+		margin-right: auto;
+		z-index: 0; 
+		padding: 25px 25px 25px 25px;
+		width: 250px;
+		height: 350px; 
+		background-color:  #cce0ff; 
+		}					
+		#form input 
+		{
+		border-radius: 5px;
+		width: 160px;
+		border-color: #555;
+		display: inline-block; 
+		}
+		#div-checked-pseudo
+		{
+		display: inline-block; 	
+		}
+		#pseudo-checked
+		{
+		visibility: hidden; 
+		width: 15px;
+		margin-left: 10px; 
+		margin-top: 10px;  		
+		}
+		#mdp-checked
+		{
+		visibility: hidden; 
+		width: 15px;
+		margin-left: 10px; 
+		margin-top: 10px;  		
+		}
+		#confirmation-checked
+		{
+		visibility: hidden; 
+		width: 15px;
+		margin-left: 10px; 
+		margin-top: 10px;  		
+		}
+		#mail-checked
+		{
+		visibility: hidden; 
+		width: 15px;
+		margin-left: 10px; 
+		margin-top: 10px;  		
+		}	
+
+		
+/* ADMIN ZONE*/
+.adminZone
+{
+	position: absolute;
+	z-index: 11;
+	display: flex;
+	flex-direction: row;					
+left: 5%;
+right: 5%;
+	top: 0px;
+	width: 90%;
+	background-color: #b3d1ff;
+	color: blac; 
+	box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.60);
+}
+.adminZoneLeft
+{
+	border: solid re;
+	width: 35%;
+}
+.adminZoneRight
+{
+	border: solid gree;
+	position: relative; 
+	width: 60%;
+}
+
+.administrationArticles
+{
+	border: solid re; 
+	background-color: white;
+	width: 90%;
+	min-height: 300px; 
+	margin-top: 30px;
+	max-height: 350px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	overflow: scroll;
+	padding: 1%; 
+	box-shadow: inset -3px 8px 26px 7px rgba(0,0,0,0.67);
+}
+.adminArticles
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;	
+	border: solid gree;
+	background-color: #b3d1ff;
+	margin-bottom: 5px;
+	width: 100%;
+	box-shadow: 0px 12px 7px 4px rgba(0,0,0,0.71);
+}
+.adminArticles div, em, h4, p
+{
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+}
+.adminArticles .contentDate, .adminComments .contentDate
+{
+	margin: 0px;
+	padding: 1%;
+	width: 20%;
+	height: 100;
+}
+.adminArticles .contentData, .adminComments .contentData
+{
+	margin: 0px;
+	padding: 1%;
+	width: 50%;
+	text-align: justify;
+	background-color: white;
+}
+.adminArticles .contentAction, .adminComments .contentAction
+{
+	margin: 0px;
+	padding: 1%;
+	width: 23%;
+	height: 100%;
+	text-align: right;
+}
+.administrationComments
+{
+	border: solid re; 
+	background-color: white;
+	width: 90%;
+	min-height: 300px; 
+	max-height: 350px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	overflow: scroll;
+	padding: 1%; 
+	box-shadow: inset -3px 8px 26px 7px rgba(0,0,0,0.67);
+	
+}
+.adminComments
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	background-color: #b3d1ff;
+	margin-bottom: 5px;
+	width: 100%;
+	box-shadow: 0px 12px 26px 0px rgba(0,0,0,0.67);
+}
+	
+.adminComments h4, em
+{
+	display: inline-block;
+}
+.adminComments div
+{
+	margin: 0px;
+		display: inline-block;
+
+}
+.redFlag
+{
+ background-color: yellow;
+ 
+}
+								html
+								{
+									 background-image: url("../../view/frontend/bkImg.jpg");
+									 background-repeat: repeat;
+									 background-size: auto auto;
+								}
+								html body
+								{
+									 height: 2000px;
+								}
+								.contentDiv
+								{
+									position: relative; 
+									width: 100%;
+									margin-left: auto;
+									margin-right: auto;
+									margin-top: 0px; 
+									margin-bottom: 0px;
+									overflow: hidden;
+									padding: 0px;
+								height: 2000px;
+									border: solid 2px blac;
+								}
+								.content
+								{
+									border: solid gree;
+									position: absolute;
+									top: 25px;
+								bottom: 0px;
+								left: 5%; 
+								right: 5%;
+									padding: 0px;
+									width: 90%; 
+								height: 2000px;
+								box-shadow: 0 0 0 0, 5px 5px 15px #555, 0 0 0 0,-5px 5px 15px #555;
+								/*overflow: hidden;*/
+									z-index: 10;
+								}
+									.news
+									{
+										width:90%;
+										border: solid re;
+										margin: auto;
+										position: relative;
+									}	
+									.news img
+									{
+										height: 30%;
+									}	
+									/*
+									.news2
+									{
+										width:100%;
+										border: solid re;
+										margin-bottom: 55px;
+										position: relative;
+									}
+									*/
+								/*
+								.contentOpacity
+								{
+									position: absolute;
+									top: 0px;
+									bottom: 0px;
+									border: 2px solid red;
+									opacity: 0.1;
+									box-shadow: 0 0 0 0, 15px 15px 15px #555, 0 0 0 0,-5px 5px 15px #555; 
+									background-color: #e6f0ff;
+									width: 100%;
+									z-index: 1;
+								}
+								*/
+												/*SHADOW INSET */
+												/*
+												.shadowImageBoxLeft
+												{
+													position: absolute;
+													z-index: 3;
+													width: 25px;
+													height: 100%;
+													box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, inset 10px 0px 15px #555;
+													top: 0;
+													left: 0;
+													border: solid re;
+												}
+												.shadowImageBoxRight
+												{
+													position: absolute;
+													z-index: 3;
+													width: 25px;
+													height: 100%;
+													box-shadow: 0 0 0 0, inset -10px 0px 15px #555, 0 0 0 0, 0 0 0 0;
+													top: 0;
+													right: 0;
+													border: solid re;
+												}
+												*/
+							
+								h1,h2, h3
+								{
+									padding-top: 15px;
+									padding-bottom: 0px;
+									text-align:center;
+								}	
+								h1 a
+								{
+									color: black;
+								}
+								h2
+								{
+									background-color:white;
+									color:black;
+									font-size:20px;
+									margin:0px;
+									background: rgba(255, 255, 255, 0.8);
+								}
+								.newsDate  
+								{
+									text-align:center;				
+									background-color:white;
+									color:black;
+									font-size:0.9em;
+									margin:0px;
+									background: rgba(255, 255, 255, 0.8);
+								}
+								.news p
+								{
+									margin-top:0px;
+									padding: 2%; 
+									background: rgba(255, 255, 255, 0.8);
+								}
+								a
+								{
+									text-decoration: none;
+									color: blue;
+								}
+/* ADMIN */ 
+								
+						
+								
+								
+								
+	/* FORM COMMENT */
+		.formComment
+		{
+			background-color: #b3d1ff;
+			padding: 1%;
+		}
+		.formComment label
+		{
+			font-size: 18px;
+			font-style: italic;
+		}		
+		.formComment input[type='text'], textarea
+		{
+			border: solid re;
+			width: 20%; 
+		}		
+		.commentDiv
+		{
+			padding: 1%;
+			background-color: rgba(255, 255, 255, 0.5);		
+		}
+		.commentComment
+		{
+			background-color: white;
+			width: 100%;
+		}
+		
+/* DISPLAY IMAGES */ 
+.imageClass
+{
+	border: solid re; 
+	margin: 0px;
+	width: 100%; 
+	height: 100%; 
+}
+
+/* BUTTON  */
+.buttonLikeDiv
+{
+	position: relative;
+	border: solid 1px black; 
+	width: 55px; 
+	height: 20px;
+	border-radius: 5px;
+	margin-right: 0px;
+	margin-left: 15px;
+	display: inline-block;
+	padding: 0px;
+	text-align: right;
+}
+.buttonLike, .buttonDislike
+{
+	position: absolute;
+	top: 0px;
+	left: -7px;
+	/*[ Position ]*/
+	display: inline-block;	
+	height:20px;
+	width:20px;
+	line-height:47px;
+	background-color:#fff;
+	text-align:center;
+	font-size: 32px;
+	/* Transitions */
+	transition:.1s ease-out;
+	/* Shadows */
+	/*box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);*/
+	box-shadow: 6px 8px 10px 0px rgba(0, 0, 0, 0.6);/* Borders */
+	border-bottom:1px solid black;
+	/*[{- Border radius -}]*/
+	border-radius:30px;
+}
+.buttonLike:hover, .buttonDislike:hover
+{
+    animation: pulse 1s ease 0s infinite normal;
+}
+@keyframes pulse 
+{
+    0% {
+      transform: scale(1) rotate(0deg); 
+    }
+    50% {
+      /*transform: scale(1.1) rotate(-5deg);*/ 
+      transform: scale(1.3) rotate(-5deg); 
+    }
+    100% {
+      transform: scale(1) rotate(0deg); 
+    }
+}
+.buttonLike:active, .buttonDislike:active
+{
+	color:grey;
+	transition: 0.1s;
+	/*{Shadow}*/
+	box-shadow:inset 2px 2px 5px 0 #333;
+	box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* FOOTER */
+.footer
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	width: 90%;
+	padding: 1%;
+	height: 55px;
+	background-color: #b3d1ff;
+	color: black;
+	box-shadow: 0px 9px 23px 6px rgba(0,0,0,0.70);	
+}		
