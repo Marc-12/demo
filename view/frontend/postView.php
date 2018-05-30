@@ -1,7 +1,6 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 <?php ob_start(); ?>
 
-		<h1><a href="index.php">Billet simple pour l'Alaska</a></h1>
 		<div class="news">
 			<div>
 				<h2><?= htmlspecialchars($post['title']) ?></h2>
@@ -58,7 +57,8 @@
 				{
 					if ($_SESSION['id'] == $comment['pseudo_id'])
 					{
-						echo '(<a href="index.php?action=updateComment&amp;id='.$comment['id'].'">modifier - </a>';
+						//echo '(<a href="index.php?action=updateComment&amp;id='.$comment['id'].'">modifier - </a>';
+						echo '(<a href="index.php?action=updateCommentPage&amp;id='.$comment['id'].'">modifier - </a>';
 						echo '<a href="index.php?action=eraseComment&amp;id='.$comment['id'].'">supprimer</a>)';
 						//mise en mémoire de la page actuelle en variable 
 						$_SESSION['redirectionPage'] = $_SERVER['REQUEST_URI']; 

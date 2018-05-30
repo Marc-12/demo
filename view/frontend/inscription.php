@@ -97,6 +97,6 @@
 				$form1 = new Form();
 				$form1->loader();		
 		?>
-		<script src="inscription.js"></script>
+		<script src="/P4-VERSION5/public/js/inscription.js"></script>
    </body>
 </html>

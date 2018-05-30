@@ -2,11 +2,11 @@
 class CommentManager
 {	
 	// UPDATE COMMENT 
-	public function postUpdateComment($comment, $id)
+	public function postUpdateComment($id, $author, $comment)
 	{
 		$db = $this->dbConnect();
-		$update = $db->prepare('UPDATE comments SET comment=? WHERE id=?');
-		$updateComment = $update->execute(array($comment, $id));
+		$update = $db->prepare('UPDATE comments SET comment=?, author=? WHERE id=?');
+		$updateComment = $update->execute(array($comment, $author, $id));
 		return $updateComment;
 	}
 	// DISPLAY COMMENTS
@@ -17,6 +17,20 @@ class CommentManager
 		$req->execute(array($postId));
 		$comments = $req->fetchAll();
 		$req->closeCursor();
+		return $comments;
+	}
+	// DISPLAY COMMENTS-2
+	public function getComments2($postId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT author, comment FROM comments WHERE id=?');
+		$req->execute(array($postId));
+		$comments = $req->fetchAll();
+		$req->closeCursor();
+		foreach ($comments as $data)
+		{
+			echo (json_encode($data));
+		}		
 		return $comments;
 	}
 	// DISPLAY ALL COMMENTS (admin page)
@@ -36,9 +50,7 @@ class CommentManager
 		return $affectedLines;
 	}
 	
-	
-	
-	
+
 						// GIVE OPINION to COMMENT
 						public function opinionCommentLike($CommentId)
 						{

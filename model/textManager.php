@@ -5,9 +5,14 @@ class textManager
 		//page principale
 		public $_stringLenght = 40;										
 		
+
 		public function initSummary($datas)
 		{
-			$newDatas = html_entity_decode($datas);					
+			$newDatas = html_entity_decode($datas);	
+
+			$stringDelete= array(' ', "\t",'0','1','2','3','4','5','6','7','8','9', '=', '+', '-', '*', '/', '\\', ',', '.', ';', ':', '[', ']', '{', '}', '(', ')', '<', '>', '&', '%', '$', '@', '#', '^', '!', '?', '~', '|'); // separators
+			$newDatas= str_replace($stringDelete, " ", $newDatas);				
+			
 			if (str_word_count($newDatas) <= $this->_stringLenght)
 			{
 				// rétablir la variable avec -2 (balise HTML à enlever)
@@ -27,5 +32,6 @@ class textManager
 			{
 				echo $summary[$i]." ";
 			}
-		}	
+		}
+	
 }
