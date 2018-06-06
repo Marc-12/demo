@@ -2,17 +2,24 @@
 $title = 'Mon blog'; 
 ob_start(); 
 ?>
-<div class="news">
-<?php	
-	foreach ($posts as $data)
-		{
-			?>
+<div class="news">	
+  <div class="row">
+	 <!--
+	 //
+	 //
+	 //
+	 -->
+	 <div class="post-preview">
+		<?php	
+			foreach ($posts as $data)
+			{
+				?>
 				<div class="newsPost">
 					<a href="index.php?action=post&amp;id=<?= $data['id']?> ">
+						<h2 class="post-title"><?= html_entity_decode(htmlspecialchars($data['title'])) ?></h2>
+						<div class="newsDate"><em>Publié par Jean Forteroche le <?= $data['creation_date_fr'] ?> </em></div>
 						<img src="<?= $data['image_url']?>" class="imageClass" alt="" > 
-						<h2><?= html_entity_decode(htmlspecialchars($data['title'])) ?></h2>
-						<div class="newsDate"><em>le <?= $data['creation_date_fr'] ?></em></div>
-						<p><br/>
+						<p class="text-justify">
 							<?php include_once "model/textManager.php";
 							$datas = (htmlspecialchars($data['content'])); 
 							$textManager1 = new textManager();
@@ -20,13 +27,18 @@ ob_start();
 						</p><br/>
 						<p class="readMore text-center"><em><a href="index.php?action=post&amp;id=<?= $data['id']?> "> - en savoir plus - </a></em></p>
 					</a>
-				</div>
-			<?php
-		}
-?>
+				</div><hr>
+				<?php
+			}
+		?>
+	  </div><hr>
+	  <!-- Pager -->
+	  <!--
+	  <div class="clearfix">
+		<a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+	  </div>
+	  -->
+  </div>
 </div>
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
-
-				
-				

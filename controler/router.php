@@ -4,6 +4,16 @@ function initRouteur()
 {
 	$array = array
 	(
+		//INSCRIPTION CONTROLER
+		"inscriptionPage" => array(
+		'controler' => 'InscriptionControler',
+		'method' => 'inscriptionPage'
+		),	
+		//CONNEXION CONTROLER
+		"connexionPage" => array(
+		'controler' => 'ConnexionControler',
+		'method' => 'connexionPage'
+		),
 	    //POST CONTROLER
 		"listPosts" => array(
 		'controler' => 'PostControler',

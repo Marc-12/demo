@@ -144,9 +144,9 @@ class AdminControler
 	}
 	public function adminDeleteCategory($ArrayParameters)
 	{
-
 		$AdminManager = new AdminManager(); 
-		$deleteCategory = $AdminManager->deleteCategory($ArrayParameters['categoryName']); 
+		// $deleteCategory = $AdminManager->deleteCategory($ArrayParameters['categoryName']); 
+		$AdminManager->deleteCategory($ArrayParameters['categoryName']); 
 	}
 	public function adminReadCategory()
 	{

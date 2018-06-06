@@ -29,8 +29,8 @@ class AdminManager
 		$req = $db->prepare('DELETE FROM category WHERE categoryName = ?');
 		$deleteCategory = $req->execute(array($categoryName));
 		//$req->closeCursor();
-		return $deleteCategory;
-		echo 'CATEGORY DELETED';
+		// return $deleteCategory;
+		// echo 'CATEGORY DELETED';
 	}
 	//CONNECT TO dataBASE
 	private function dbConnect()

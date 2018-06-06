@@ -5,18 +5,18 @@ class textManager
 		//page principale
 		public $_stringLenght = 40;										
 		
-
 		public function initSummary($datas)
 		{
-			$newDatas = html_entity_decode($datas);	
-
-			$stringDelete= array(' ', "\t",'0','1','2','3','4','5','6','7','8','9', '=', '+', '-', '*', '/', '\\', ',', '.', ';', ':', '[', ']', '{', '}', '(', ')', '<', '>', '&', '%', '$', '@', '#', '^', '!', '?', '~', '|'); // separators
-			$newDatas= str_replace($stringDelete, " ", $newDatas);				
-			
+			//delete html tags
+			$newDatas = html_entity_decode($datas);				
+			/*	
+			$stringDelete= array(' ', "\t",'0','1','2','3','4','5','6','7','8','9', '=', '+', '-', '*', '/', '\\', ',', '.', ';', ':', '[', ']', '{', '}', '(', ')', '<', '>', '&', '%', '$', '@', '#', '^', '!', '?', '~', '|');
+			$newDatas2= str_replace($stringDelete, " ", $newDatas);				
+			*/
 			if (str_word_count($newDatas) <= $this->_stringLenght)
 			{
 				// rétablir la variable avec -2 (balise HTML à enlever)
-				$this->_stringLenght = str_word_count($newDatas)-2;
+				$this->_stringLenght = str_word_count($newDatas)-2 ;
 				$this->summary($newDatas);
 			}
 			else
@@ -32,6 +32,6 @@ class textManager
 			{
 				echo $summary[$i]." ";
 			}
+			echo "...";
 		}
-	
 }

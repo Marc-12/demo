@@ -4,18 +4,18 @@
 		<div class="news">
 			<div>
 				<h2><?= htmlspecialchars($post['title']) ?></h2>
-				<img src="<?= $post['image_url']?>" class="imageClass" alt="" /> 
-				<div class="newsDate"><em>le <?= $post['creation_date_fr'] ?></em></div>
+				<div class="newsDate"><em>Publié par Jean Forteroche le <?= $post['creation_date_fr'] ?> </em></div>
+				<img src="<?= $post['image_url']?>" class="imageClass" alt="" > 
 			</div>
-			<p><?= html_entity_decode($post['content']) ?></p>
+			<p class="text-justify"><?= html_entity_decode($post['content']) ?></p><hr>
 		</div>
-		<h2>Commentaires</h2>	
+		<h2>Commentaire(s) de l'article</h2>	
 
 		<?php 
 			// COMMENTS
 			if (isset($_SESSION['pseudo']))
 			{
-				echo ' Vous pouvez écrire, modifier ou supprimer un commentaire en tant que: "'.$_SESSION['pseudo'].'":';
+				echo ' Vous pouvez écrire, modifier ou supprimer un commentaire en tant que: "'.$_SESSION['pseudo'].'" :';
 				// IP du PSEUDO
 				//echo '/1/mon id PSEUDO---> '.$_SESSION['id']; 
 				//echo ' <----> /2/id POST---> '.$post['id']; 
@@ -31,11 +31,11 @@
 						<div>
 							<input type="submit" />
 						</div>
-					</form>'; 
+					</form><hr>'; 
 			}
 			else
 			{
-				echo '<br><a href="view/frontend/connexion.php">Connectez-vous pour laisser un commentaire </a><a href="view/frontend/inscription.php"> --- S\'inscrire</a><br>';
+				echo '<br><a href="view/frontend/connexion.php">Connectez-vous pour laisser un commentaire </a><a href="view/frontend/inscription.php"> --- S\'inscrire</a><br><hr>';
 				//mise en mémoire de la page actuelle en variable 
 				$_SESSION['redirectionPage'] = $_SERVER['REQUEST_URI']; 
 			}
@@ -64,16 +64,15 @@
 						$_SESSION['redirectionPage'] = $_SERVER['REQUEST_URI']; 
 					}
 				}
-				echo '<div class="buttonLikeDiv"><a class="buttonLike" href="index.php?action=commentOpinion&amp;opinion=like&amp;id='.$comment['id'].'">+</a>'.$comment['likes'].'</div>';
-				echo '<div class="buttonLikeDiv"><a class="buttonDislike" href="index.php?action=commentOpinion&amp;opinion=dislike&amp;id='.$comment['id'].'">-</a>'.$comment['dislike'].'</div>';
-				echo '<div class="buttonLikeDiv"><a class="buttonDislike" href="index.php?action=commentOpinion&amp;opinion=redFlag&amp;id='.$comment['id'].'">!</a>'.$comment['redFlag'].'</div>';
-		
+				echo '<div class="buttonLikeDiv"><a class="" href="index.php?action=commentOpinion&amp;opinion=like&amp;id='.$comment['id'].'"><img src="public/images/assets/like.png" class="pngImages" alt="" ></a>'.$comment['likes'].'</div>';
+				echo '<div class="buttonLikeDiv"><a class="" href="index.php?action=commentOpinion&amp;opinion=dislike&amp;id='.$comment['id'].'"><img src="public/images/assets/dislike.png" class="pngImages" alt="" ></a>'.$comment['dislike'].'</div>';
+				echo '<div class="buttonLikeDiv"><a class="" href="index.php?action=commentOpinion&amp;opinion=redFlag&amp;id='.$comment['id'].'"><img src="public/images/assets/redflag.png" class="pngImages" alt="" ></a>'.$comment['redFlag'].'</div>';
 		?>	
 			<br><br><p class="commentComment"><i>"<?= nl2br(htmlspecialchars($comment['comment'])) ?>"</i></p><br>
  <?php }
 		
-	}
-?></div>
+	}?>
+</div>
 <?php 
 	$content = ob_get_clean(); 
 	require('template.php'); 
