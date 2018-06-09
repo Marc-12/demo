@@ -6,15 +6,15 @@
 				<input placeholder="Entrez un mot de passe" id="mdp" type="password" value="" name="pass" /><img id="mdp-checked" src="/P4-VERSION5/public/images/assets/checked.png" />
 				<input placeholder="retapez votre mot de passe" id="confirmation" type="password" value="" name="pass2" /><img id="confirmation-checked" src="/P4-VERSION5/public/images/assets/checked.png" /><br><br>
 				<input placeholder="Entrez votre email" id="mail" type="text" value="" name="mail" /><img id="mail-checked" src="/P4-VERSION5/public/images/assets/checked.png" /><br><br>
-				<input id="btn-submit" type="submit" value="Valider" /><br><br>
-				<div id="confirmation-text"></div>
+				<input id="btn-submit" type="submit" value="Valider" /><br>
+				<div id="confirmation-text"></div><div id="confirmation2-text"></div>
 			</form>						
 		</div> 	
 <?php
 class Form
 {
-	public $_check =  "";										
-	public $_content =  "";										
+	  public $_check =  "";										
+	  public $_content =  "";										
 	
 	  public function loader()
 	  {
@@ -35,8 +35,8 @@ class Form
 	  public function errorText()
 	  {
 				echo "<script>
-					$('#confirmation-text').empty();
-					$('#confirmation-text').append('".$this->_content."').css('color','red');
+					$('#confirmation2-text').empty();
+					$('#confirmation2-text').append('".$this->_content."').css('color','red');
 				</script>"; 
 	  }
 	  public function checkPseudo()
@@ -63,6 +63,14 @@ class Form
 				$this->errorText();
 			}							
 	  } 
+	  public function checkMailREGEX()
+	  {
+			if ($this->_check == 'regex')
+			{
+				$this->_content = "Désolé ! Adresse mail invalide. Ecrivez-en une de la forme: abc@def.gh"; 
+				$this->errorText();
+			}	
+	  } 
 	  public function checkMailSQL()
 	  {
 			if ($this->_check == 'email')
@@ -71,17 +79,9 @@ class Form
 				$this->errorText();
 			}						
 	  } 
-	  public function checkMailREGEX()
-	  {
-			if ($this->_check == 'regex')
-			{
-				$this->_content = "L'adresse mail n'est pas valide"; 
-				$this->errorText();
-			}
-	  } 
 }		
 $form1 = new Form();
 $form1->loader();		
-		
-$contentConnexion = ob_get_clean(); 
-require('templateConnexion.php'); 
+$content = ob_get_clean(); 
+require('template.php');
+?> 

@@ -9,7 +9,7 @@
     <body>
 	<div id="container">
 
-        <h1>DIE GROSS ERROR</h1>
+        <h1>ERROR</h1>
     </div>
 	</body>
 </html>

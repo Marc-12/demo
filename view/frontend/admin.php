@@ -22,7 +22,6 @@
 				<div>
 					<input type="submit" value="Valider"/>
 				</div>
-				  <!-- liste déroulante -->
 				  <br/>
 				<div class="test">
 					<div class="divCategoryList"></div>
@@ -30,18 +29,18 @@
 			</form>
 		</div>	
 	</div>						
-						<script>tinymce.init({selector:'.DivTinyMce'});</script>
-						<style>
-							.adminCreatePost
-							{
-								display: none;
-							}	
-							.test
-							{
-								position: relative;
-								display: none;
-							}	
-						</style>	
+	<script>tinymce.init({selector:'.DivTinyMce'});</script>
+	<style>
+		.adminCreatePost
+		{
+			display: none;
+		}	
+		.test
+		{
+			position: relative;
+			display: none;
+		}	
+	</style>	
 						
 	<div class="DivUpdatePost">														
 		<form class="adminUpdatePost" action="" method="POST" enctype="multipart/form-data">
@@ -66,18 +65,18 @@
 			</div>	
 		</form>
 	</div>
-		<script>tinymce.init({selector:'.DivTinyMceUpdate', plugins: 'template'});</script>
-		<style>
-			.DivUpdatePos
-			{
-				display: none;
-			}
-			
-			.adminUpdatePost
-			{
-				display: none;
-			}
-		</style>
+	<script>tinymce.init({selector:'.DivTinyMceUpdate', plugins: 'template'});</script>
+	<style>
+		.DivUpdatePos
+		{
+			display: none;
+		}
+		
+		.adminUpdatePost
+		{
+			display: none;
+		}
+	</style>
 	<div class="administrationArticles">	
 	<h2>Mes articles</h2>
 	<p>Dans cet espace vous pouvez créer, modifier ou effacer des articles et les mettre en ligne.</p>

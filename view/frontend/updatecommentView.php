@@ -17,35 +17,29 @@ ob_start();
         <input type="submit" />
     </div><br/><br/>
 </form>
-						<script>
-							// console.log('javascronpt entré');
-								
-								var URLValue = document.URL;							
-								//get the last part of the URL
-								URLValue = URLValue.split("id=").reverse();
-								//mise en variable
-								var URL = URLValue[0];
-								console.log(URL);
-								
-								$.ajax({
-							       	   url: "/P4-VERSION5/index.php?action=getCommentToModify",
-									   type: "GET",
-									   data: { id: URL},
-									   dataType: 'text',
-									   success: function(data)
-									   { 										
-											// PARSE JSON datas
-											var parsedJson = $.parseJSON(data);											
-											//set TITLE 
-											$(".formUpdateCommentView #author").val(parsedJson.author);
-											$(".formUpdateCommentView #comment").val(parsedJson.comment);										
-									   },
-									   error : function(data)
-									   {
-											console.log('AJAX error');
-									   }
-									});
-						</script>
+<script>
+	var URLValue = document.URL;							
+	URLValue = URLValue.split("id=").reverse();
+	var URL = URLValue[0];
+	console.log(URL);
+	$.ajax(
+	{
+	   url: "/P4-VERSION5/index.php?action=getCommentToModify",
+	   type: "GET",
+	   data: { id: URL},
+	   dataType: 'text',
+	   success: function(data)
+	   { 										
+			var parsedJson = $.parseJSON(data);											
+			$(".formUpdateCommentView #author").val(parsedJson.author);
+			$(".formUpdateCommentView #comment").val(parsedJson.comment);										
+	   },
+	   error : function(data)
+	   {
+			console.log('AJAX error');
+	   }
+	});
+</script>
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
 				

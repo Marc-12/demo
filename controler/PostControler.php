@@ -10,30 +10,28 @@ class PostControler
 				$posts = $postManager->getPosts(); 	
 				require('view/frontend/listPostsView.php');
 			}
-			public function post()
+			public function post($arrayParameters)
 			{
 				$postManager = new PostManager();
 				$commentManager = new CommentManager();
-				$post = $postManager->getPost($_GET['id']);
-				$comments = $commentManager->getComments($_GET['id']);
-				require('view/frontend/postView.php');	$postManager = new PostManager();
+				$post = $postManager->getPost($arrayParameters['id']);				
+				$comments = $commentManager->getComments($arrayParameters['id']);
+				require('view/frontend/postView.php');	
 			}
-			public function commentOpinion()
+			public function commentOpinion($arrayParameters)
 			{
+				$commentManager = new CommentManager();
 				if($_GET['opinion'] == "like")	
 				{
-					$commentManager = new CommentManager();
-					$commentManager->opinionCommentLike($_GET['id']);	
+					$commentManager->opinionCommentLike($arrayParameters['id']);	
 				}
 				elseif($_GET['opinion'] == "dislike")	
 				{
-					$commentManager = new CommentManager();
-					$commentManager->opinionCommentDislike($_GET['id']);	
+					$commentManager->opinionCommentDislike($arrayParameters['id']);	
 				}	
 				elseif($_GET['opinion'] == "redFlag")	
 				{
-					$commentManager = new CommentManager();
-					$commentManager->opinionredFlag($_GET['id']);	
+					$commentManager->opinionredFlag($arrayParameters['id']);	
 				}
 				$link = $_SESSION['redirectionPage']; 
 				header('Location: '.$link);	

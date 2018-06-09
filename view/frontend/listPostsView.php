@@ -4,11 +4,6 @@ ob_start();
 ?>
 <div class="news">	
   <div class="row">
-	 <!--
-	 //
-	 //
-	 //
-	 -->
 	 <div class="post-preview">
 		<?php	
 			foreach ($posts as $data)
@@ -20,7 +15,7 @@ ob_start();
 						<div class="newsDate"><em>Publié par Jean Forteroche le <?= $data['creation_date_fr'] ?> </em></div>
 						<img src="<?= $data['image_url']?>" class="imageClass" alt="" > 
 						<p class="text-justify">
-							<?php include_once "model/textManager.php";
+							<?php include_once "model/TextManager.php";
 							$datas = (htmlspecialchars($data['content'])); 
 							$textManager1 = new textManager();
 							$textManager1->initSummary($datas);?>
@@ -32,12 +27,6 @@ ob_start();
 			}
 		?>
 	  </div><hr>
-	  <!-- Pager -->
-	  <!--
-	  <div class="clearfix">
-		<a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-	  </div>
-	  -->
   </div>
 </div>
 <?php $content = ob_get_clean(); ?>

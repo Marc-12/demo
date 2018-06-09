@@ -1,4 +1,3 @@
-<!-- Footer -->
 <footer class="footer">
   <div class="container-fluid">
 	<div class="row">
@@ -39,8 +38,7 @@
 <script type="text/javascript" src="/P4-VERSION5/public/js/pageAdmin.js"></script>
 <script type="text/javascript" src="/P4-VERSION5/public/js/logAdmin.js"></script>
 <script type="text/javascript" src="/P4-VERSION5/public/js/commentAdmin.js"></script>
-<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/P4-VERSION5/public/js/inscription.js"></script>
 <script src="/P4-VERSION5/public/vendor/jquery/jquery.min.js"></script>
 <script src="/P4-VERSION5/public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
 <script src="/P4-VERSION5/public/js/clean-blog.min.js"></script>

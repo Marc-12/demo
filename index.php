@@ -1,33 +1,22 @@
 <?php
 session_start();
-require('controler/AutoLoader.php');
-include ('controler/router.php');
-
-//AUTOLOADER -> charge les CLASS  /!\ bien écrire le nom des classes et de ficheir (à l'identique)
-
+include ('AutoLoader.php');
+include ('Router.php');
 
 
 if (isset($_GET['action']))
 {
-	//rassembler variables POST & GET 
-	$ArrayParameters = array_merge($_GET, $_POST);
-	//print_r ($ArrayParameters);
-	//selectionner uniquement l'action
-	$route = $ArrayParameters['action'];
-
-	//ROUTER --> charge la bonne CLASSE en fonction du nom de l'ACTION)
+	$arrayParameters = array_merge($_GET, $_POST);
+	$route = $arrayParameters['action'];
 	$router = initRouteur();
-	$MyClass = ($router["".$route.""]["controler"]);
-
-	//enlever le parametre ACTION du tableau
-	unset($ArrayParameters['action']);
+	$myClass = ($router["".$route.""]["controler"]);
+	unset($arrayParameters['action']);
 
 	try 
 	{
-		 //autoloader
 		 Autoloader::register();
-		 $Controleur1 = new $MyClass();
-		 $Controleur1->$route($ArrayParameters);
+		 $controleur1 = new $myClass();
+		 $controleur1->$route($arrayParameters);
 	} 
 	catch (Exception $e) 
 	{
@@ -36,8 +25,7 @@ if (isset($_GET['action']))
 }
 else
 {
-	//autoloader
 	Autoloader::register();
-	$Controleur1 = new PostControler();
-	$Controleur1->listPosts();
+	$controleur1 = new PostControler();
+	$controleur1->listPosts();
 }

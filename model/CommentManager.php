@@ -1,7 +1,8 @@
 <?php
-class CommentManager
+require_once('ConnectDbase.php');
+
+class CommentManager extends ConnectDbase
 {	
-	// UPDATE COMMENT 
 	public function postUpdateComment($id, $author, $comment)
 	{
 		$db = $this->dbConnect();
@@ -9,7 +10,6 @@ class CommentManager
 		$updateComment = $update->execute(array($comment, $author, $id));
 		return $updateComment;
 	}
-	// DISPLAY COMMENTS
 	public function getComments($postId)
 	{
 		$db = $this->dbConnect();
@@ -19,7 +19,6 @@ class CommentManager
 		$req->closeCursor();
 		return $comments;
 	}
-	// DISPLAY COMMENTS-2
 	public function getComments2($postId)
 	{
 		$db = $this->dbConnect();
@@ -33,7 +32,6 @@ class CommentManager
 		}		
 		return $comments;
 	}
-	// DISPLAY ALL COMMENTS (admin page)
 	public function getAllComments()
 	{
 		$db = $this->dbConnect();
@@ -41,7 +39,6 @@ class CommentManager
 		$allComments->execute(array());
 		return $allComments;
 	}
-	// WRITE COMMENT
 	public function postComment($pseudoId, $postId, $author, $comment)
 	{
 		$db = $this->dbConnect();
@@ -49,35 +46,30 @@ class CommentManager
 		$affectedLines = $comments->execute(array($pseudoId, $postId, $author, $comment));
 		return $affectedLines;
 	}
-	
-
-						// GIVE OPINION to COMMENT
-						public function opinionCommentLike($CommentId)
-						{
-							$db = $this->dbConnect();
-							$req = $db->prepare('UPDATE comments SET likes=likes+1 WHERE id=?');
-							$opinionComment = $req->execute(array($CommentId));
-							$req->closeCursor();
-							return $opinionComment;
-						}	
-						public function opinionCommentDislike($CommentId)
-						{
-							$db = $this->dbConnect();
-							$req = $db->prepare('UPDATE comments SET dislike=dislike+1 WHERE id=?');
-							$opinionComment = $req->execute(array($CommentId));
-							$req->closeCursor();
-							return $opinionComment;
-						}	
-						public function opinionredFlag($CommentId)
-						{
-							$db = $this->dbConnect();
-							$req = $db->prepare('UPDATE comments SET redFlag=redFlag+1 WHERE id=?');
-							$opinionComment = $req->execute(array($CommentId));
-							$req->closeCursor();
-							return $opinionComment;
-						}	
-	
-	// ERASE COMMENT 
+	public function opinionCommentLike($CommentId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE comments SET likes=likes+1 WHERE id=?');
+		$opinionComment = $req->execute(array($CommentId));
+		$req->closeCursor();
+		return $opinionComment;
+	}	
+	public function opinionCommentDislike($CommentId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE comments SET dislike=dislike+1 WHERE id=?');
+		$opinionComment = $req->execute(array($CommentId));
+		$req->closeCursor();
+		return $opinionComment;
+	}	
+	public function opinionredFlag($CommentId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE comments SET redFlag=redFlag+1 WHERE id=?');
+		$opinionComment = $req->execute(array($CommentId));
+		$req->closeCursor();
+		return $opinionComment;
+	}	
 	public function eraseComment($id)
 	{
 		$db = $this->dbConnect();
@@ -85,39 +77,27 @@ class CommentManager
 		$eraseComment = $erase->execute(array($id));
 		return $eraseComment;
 	}
-				// ACCEPT COMMENT 
-				public function acceptComment($id)
-				{
-					$adminComment = TRUE; 
-					$db = $this->dbConnect();
-					$accept = $db->prepare('UPDATE comments SET admin_comment=? WHERE id=?');
-					$acceptComment = $accept->execute(array($adminComment, $id));
-					return $acceptComment;
-				}
-				// REFUSE COMMENT 
-				public function refuseComment($id)
-				{
-					$adminComment = FALSE; 
-					$db = $this->dbConnect();
-					$refuse = $db->prepare('UPDATE comments SET admin_comment=? WHERE id=?');
-					$refuseComment = $refuse->execute(array($adminComment, $id));
-					return $refuseComment;
-				}
-				
-				
-				
-	// ERASE all POST' COMMENTs 
+	public function acceptComment($id)
+	{
+		$adminComment = TRUE; 
+		$db = $this->dbConnect();
+		$accept = $db->prepare('UPDATE comments SET admin_comment=? WHERE id=?');
+		$acceptComment = $accept->execute(array($adminComment, $id));
+		return $acceptComment;
+	}
+	public function refuseComment($id)
+	{
+		$adminComment = FALSE; 
+		$db = $this->dbConnect();
+		$refuse = $db->prepare('UPDATE comments SET admin_comment=? WHERE id=?');
+		$refuseComment = $refuse->execute(array($adminComment, $id));
+		return $refuseComment;
+	}	
 	public function erasePostComments($id)
 	{
 		$db = $this->dbConnect();
 		$erase = $db->prepare('DELETE FROM comments WHERE post_id = ?');
 		$eraseComment = $erase->execute(array($id));
 		return $eraseComment;
-	}
-	// CONNECT TO dataBASE
-	private function dbConnect()
-	{
-		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-		return $db;
 	}
 }

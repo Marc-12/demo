@@ -1,8 +1,8 @@
 <?php
-class AdminManager
+require_once('ConnectDbase.php');
+
+class AdminManager extends ConnectDbase
 {		
-		
-	//add CATEGORY
 	public function addCategory($categoryName)
 	{
 		$db = $this->dbConnect();
@@ -10,7 +10,6 @@ class AdminManager
 		$req->execute(array($categoryName));
 		$req->closeCursor();	
 	}
-	//READ CATEGORY
 	public function readCategory()
 	{	
 		$db = $this->dbConnect();
@@ -20,22 +19,11 @@ class AdminManager
 		{
 			echo '<option value="'.$data['categoryName'].'">'.$data['categoryName'].'</option>';
 		}
-		//$db->closeCursor();
 	}
-	//ERASE CATEGORY
 	public function deleteCategory($categoryName)
 	{	
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM category WHERE categoryName = ?');
 		$deleteCategory = $req->execute(array($categoryName));
-		//$req->closeCursor();
-		// return $deleteCategory;
-		// echo 'CATEGORY DELETED';
-	}
-	//CONNECT TO dataBASE
-	private function dbConnect()
-	{
-		$db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-		return $db;
 	}
 }
